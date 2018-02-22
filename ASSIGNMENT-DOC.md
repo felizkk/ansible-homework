@@ -13,6 +13,12 @@ QA Servers
 The frontend1, app1, app2, and appdb1 hosts are behind Openstack and will be
 treated as Dynamic Inventory
 
+Openstack Jumpbox
+To connect to private subnet to OpenStack, we are using Jumpbox (workstation)
+This is achieved by editing the ~/.ssh/config of cloud-user to forward ssh to
+host 10.10.10.* which is the private subnet of the Openstack instances
+Openstack.pem key is used on both workstaion and Tower credentials
+
 Production Servers
 There will be frontend1, app1, app2, and appdb1 provisioned on AWS
 We will use Dynamic Inventory
