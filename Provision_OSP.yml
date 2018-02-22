@@ -20,20 +20,10 @@
     - osp-keypair
     - osp-securitygroup
     - osp-flavor
-  tasks:
-    - debug: var=instances
-      tags:
-        - osp-instances
-    - debug: var=instances[app2]
-      tags:
-        - osp-instances
   # Create Server Instances
-  #  - {name: osp-instances, target_instances: '{{ instances }}'}
-  #tasks:
-  # Create Server Instances
-  #  - name: Create Server Instances
-  #    include_role:
-  #      name: osp-instances
-  #      with_items:
-  #        - "{{ instances }}"
+    - {name: osp-instances, target_instance: '{{ instance_frontend1 }}'}
+    - {name: osp-instances, target_instance: '{{ instance_app1 }}'}
+    - {name: osp-instances, target_instance: '{{ instance_app2 }}'}
+    - {name: osp-instances, target_instance: '{{ instance_db }}'}
+
 ...

@@ -8,25 +8,28 @@
 #database_group: databaseservers
 #deployment: qa
 
-instances:
-  - frontend1:
-      name: frontend1
-      group: frontends
-      deployment: qa
-      security_group_name: frontend_servers
-  - app1:
-      name: app1
-      group: apps
-      deployment: qa
-      security_group_name: app_servers
-  - app2:
-      name: app2
-      group: apps
-      deployment: qa
-      security_group_name: app_servers
-  - db:
-      name: db
-      group: appdbs
-      deployment: qa
-      security_group_name: db_servers
+instance_frontend1:
+  name: frontend1
+  group: frontends
+  deployment: qa
+  security_group_name: frontend_servers
+
+instance_app1:
+  name: app1
+  group: apps
+  deployment: qa
+  security_group_name: app_servers
+
+instance_app2:
+  name: app2
+  group: apps
+  deployment: qa
+  security_group_name: app_servers
+
+instance_db:
+  name: db
+  group: appdbs
+  deployment: qa
+  security_group_name: db_servers
+
 ...
