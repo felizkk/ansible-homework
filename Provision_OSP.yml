@@ -5,9 +5,10 @@
 
 - name: OpenStack Deployment through a Jumpbox
   # Requirements: Jumpbox is already configured
+  # Jumpbox enables ssh forward via ~/.ssh/config of the cloud-user
   hosts: workstation-3847.rhpds.opentlc.com
   vars_files:
-    - osp_network_var.yml
+    - vars/osp_network.yml
   vars:
     cloud_name: ospcloud
   roles:
