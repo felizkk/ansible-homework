@@ -12,11 +12,11 @@
 
 # Use this when we are changing key as hash will be different
 - name: Delete Keys on Openstack
- os_keypair:
-   cloud: "{{ cloud_name }}"
-   state: absent
-   name: ansible_ssh
- tags:
+  os_keypair:
+    cloud: "{{ cloud_name }}"
+    state: absent
+    name: ansible_ssh
+  tags:
    - osp-keypair-reinstall
 
 - name: Install Key on Openstack
