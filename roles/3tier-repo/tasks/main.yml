@@ -1,38 +1,9 @@
 ---
-- name: Ensure httpie is the latest
-  become: yes
-  yum:
-    name: httpie
-    state: latest
-  tags:
-    - haproxy
-    - deploy-frontend
-- name: Ensure haproxy is installed/latest
-  become: yes
-  yum:
-    name: haproxy
-    state: latest
-  tags:
-    - haproxy
-    - deploy-frontend
-- name: Ensure haproxy is enabled at boot and started
-  become: yes
-  service:
-    name: haproxy
-    enabled: yes
-    state: started
-  tags:
-    - haproxy
-    - deploy-frontend
-- name: Ensure haproxy config is the latest
-  become: yes
+- name: Check repo file is the latest
   template:
-    src: templates/haproxy.cfg.j2
-    dest: /etc/haproxy/haproxy.cfg
-  notify:
-    - restart haproxy
+    src: open_three-tier-app.repo
+    dest: /etc/yum.repos.d/open_three-tier-app.repo
+    mode: 0644
   tags:
-    - haproxy
-    - haproxy-template
-    - deploy-frontend
+    - 3tier-repo
 ...

@@ -1,0 +1,9 @@
+---
+- name: restart haproxy
+  become: yes
+  service:
+    name: haproxy
+    state: restarted
+  tags:
+    - 3tier-frontend    
+...

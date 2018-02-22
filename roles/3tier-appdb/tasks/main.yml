@@ -1,0 +1,36 @@
+---
+- name: Ensure portgresql is the installed/latest
+  become: yes
+  yum:
+    name: postgresql-server
+    state: latest
+  tags:
+    - 3tier-appdb
+
+# Need to check if postgresql has been initialized
+# If not, do initdb and create file
+- name: Check if postgresql has been initialized
+  stat:
+    path: /var/lib/pgsql/data/postgresql.conf
+  register: postgresqlinit
+  tags:
+    - 3tier-appdb
+
+- name: Initiate postgresql database
+  become: yes
+  command: service postgresql initdb
+           creates=/var/lib/pgsql/data/postgresql.conf
+  when: postgresqlinit.stat.exists == false
+  tags:
+    - 3tier-appdb
+
+- name: Ensure postgresql is enabled at boot and started
+  become: yes
+  service:
+    name: postgresql
+    state: started
+    enabled: yes
+  tags:
+    - 3tier-appdb
+    
+...
