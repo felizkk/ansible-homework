@@ -1,0 +1,57 @@
+---
+# Internal Private Network
+- name: Creating Internal Network
+  os_network:
+    cloud: "{{ cloud_name }}"
+    state: present
+    name: "{{ int_network_name }}"
+    external: false
+  tags:
+   - internal-network
+- name: Creating Internal Subnet
+  os_subnet:
+    cloud: "{{ cloud_name }}"
+    state: present
+    network_name: "{{ int_network_name }}"
+    name: "{{ int_subnet_name }}"
+    cidr: "{{ int_cidr }}"
+    dns_nameservers: "{{ int_dns_server }}"
+    host_routes: "{{ int_static_route }}"
+  tags:
+   - internal-network
+
+# External Public Network
+- name: Creating External Network
+  os_network:
+    cloud: "{{ cloud_name }}"
+    state: present
+    name: "{{ ext_network_name }}"
+    external: true
+  tags:
+   - external-network
+- name: Creating External Subnet
+  os_subnet:
+    cloud: "{{ cloud_name }}"
+    state: present
+    network_name: "{{ ext_network_name }}"
+    name: "{{ ext_subnet_name }}"
+    cidr: "{{ ext_cidr }}"
+    dns_nameservers: "{{ ext_dns_server }}"
+    host_routes: "{{ ext_static_route }}"
+  tags:
+   - external-network
+
+# Router to connect external to internal
+- name: Creating Router
+  os_router:
+    cloud: "{{ cloud_name }}"
+    state: present
+    name: router1
+    network: "{{ ext_network_name }}"
+    external_fixed_ips:
+      - subnet: "{{ ext_subnet_name }}"
+    interfaces:
+      - "{{ int_subnet_name }}"
+  tags:
+    - router-network
+...

@@ -1,0 +1,15 @@
+---
+# Red Hat Delivery Specialist - Ansible Advanced
+# Homework Assignment
+# Provision QA Environment on Openstack
+
+- name: OpenStack Deployment through a Jumpbox
+  # Requirements: Jumpbox is already configured
+  #hosts: jumpbox
+  vars_files:
+    - osp_network_var.yml
+  vars:
+    cloud_name: ospcloud
+  roles:
+    - osp-network
+...

@@ -1,0 +1,39 @@
+# List of internal and external network
+# Single subnet for each network
+# Not using with_subelements as 3 subs is not supported
+
+# Internal Network
+int_network_name: int_network
+int_subnet_name: int_subnet
+int_cidr: "20.20.20.0/24"
+
+int_network:
+  - cidr: "20.20.20.0/24"
+
+int_static_route:
+  - destination: "0.0.0.0/0"
+    nexthop: 192.168.0.0
+  - destination: "192.168.0.0/24"
+    nexthop: 192.168.0.0
+
+int_dns_server:
+  - 8.8.8.7
+  - 8.8.8.8
+
+# External Network
+ext_network_name: ext_network
+ext_subnet_name: ext_subnet
+ext_cidr: "10.10.10.0/24"
+
+ext_network:
+  - cidr: "20.20.20.0/24"
+
+ext_static_route:
+  - destination: "0.0.0.0/0"
+    nexthop: 10.10.10.0
+  - destination: "192.168.0.0/24"
+    nexthop: 192.168.0.0
+
+ext_dns_server:
+  - 8.8.8.7
+  - 8.8.8.8
