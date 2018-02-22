@@ -10,11 +10,8 @@
     - region_name: RegionOne
   gather_facts: true
   roles:
+  # Create Dynamic Inventory by Gathering Facts on OSP instances
     - osp-facts
-    # - 3tier-frontend
-    # - 3tier-app
-    # - 3tier-appdb
-    # - 3tier-smoketest
 
 # Frontends Tier
 - name: Deploy FrontEnd Servers
@@ -34,7 +31,6 @@
     - 3tier-repo
     - 3tier-app
 
-#
 # # Appdbs Tier
 # - name: Deploy Database Servers
 #   become: yes
