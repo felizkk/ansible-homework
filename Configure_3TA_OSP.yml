@@ -11,29 +11,29 @@
   gather_facts: true
   roles:
     - osp-facts
-    - 3tier-repo
     # - 3tier-frontend
     # - 3tier-app
     # - 3tier-appdb
     # - 3tier-smoketest
 
-# # Frontends Tier
-# - name: Deploy FrontEnd Servers
-#   hosts: frontends
-#   become: yes
-#   gather_facts: false
-#   roles:
-#     - {name: 3tier-repo, tags: check-repo}
-#     - {name: 3tier-frontend, tags: deploy-frontend}
-#
-# # Apps Tier
-# - name: Deploy Application Servers
-#   hosts: apps
-#   become: yes
-#   gather_facts: false
-#   roles:
-#     - {name: 3tier-repo, tags: check-repo}
-#     - {name: 3tier-app, tags: deploy-app}
+# Frontends Tier
+- name: Deploy FrontEnd Servers
+  hosts: frontends
+  become: yes
+  gather_facts: false
+  roles:
+    - 3tier-repo
+    - 3tier-frontend
+
+# Apps Tier
+- name: Deploy Application Servers
+  hosts: apps
+  become: yes
+  gather_facts: false
+  roles:
+    - 3tier-repo
+    - 3tier-app
+
 #
 # # Appdbs Tier
 # - name: Deploy Database Servers
