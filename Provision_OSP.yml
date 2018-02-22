@@ -13,4 +13,6 @@
     cloud_name: ospcloud
   roles:
     - osp-network
+    - osp-keypair
+    - osp-securitygroup
 ...
