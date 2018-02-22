@@ -8,15 +8,16 @@
     ssh_key_file: .ssh/test_id_rsa
   tags:
     - osp-keypair
+    - osp-keypair-reinstall
 
 # Use this when we are changing key as hash will be different
-#- name: Delete Keys on Openstack
-#  os_keypair:
-#    cloud: "{{ cloud_name }}"
-#    state: absent
-#    name: ansible_ssh
-#  tags:
-#    - osp-keypair
+- name: Delete Keys on Openstack
+ os_keypair:
+   cloud: "{{ cloud_name }}"
+   state: absent
+   name: ansible_ssh
+ tags:
+   - osp-keypair-reinstall
 
 - name: Install Key on Openstack
   os_keypair:
@@ -26,4 +27,5 @@
     public_key_file: "{{ ansible_env.HOME }}/.ssh/test_id_rsa.pub"
   tags:
     - osp-keypair
+    - osp-keypair-reinstall
 ...
