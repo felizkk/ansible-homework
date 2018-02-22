@@ -20,8 +20,10 @@
     - osp-keypair
     - osp-securitygroup
     - osp-flavor
+  tasks:
+    - debug: var=instances
   # Create Server Instances
-    - {name: osp-instances, target_instances: '{{ instances }}'}
+  #  - {name: osp-instances, target_instances: '{{ instances }}'}
   #tasks:
   # Create Server Instances
   #  - name: Create Server Instances
