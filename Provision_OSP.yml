@@ -22,6 +22,8 @@
     - osp-flavor
   tasks:
     - debug: var=instances
+      tags:
+        - osp-instances
   # Create Server Instances
   #  - {name: osp-instances, target_instances: '{{ instances }}'}
   #tasks:
