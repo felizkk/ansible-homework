@@ -19,12 +19,12 @@
     - osp-network
     - osp-keypair
     - osp-securitygroup
-  # Create M2.Small Flavor as defined in varilable file
     - osp-flavor
   tasks:
   # Create Server Instances
     - name: Create Server Instances
       include_role:
         name: osp-instances
-        with_items: "{{ instances }}"
+        with_items:
+          - "{{ instances }}"
 ...
