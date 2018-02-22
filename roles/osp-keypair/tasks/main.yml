@@ -9,15 +9,16 @@
   tags:
     - osp-keypair
 
-- name: Delete Keys on Openstack
-  os_keypair:
-    cloud: "{{ cloud_name }}"
-    state: absent
-    name: ansible_ssh
-  tags:
-    - osp-keypair
+# Use this when we are changing key as hash will be different
+#- name: Delete Keys on Openstack
+#  os_keypair:
+#    cloud: "{{ cloud_name }}"
+#    state: absent
+#    name: ansible_ssh
+#  tags:
+#    - osp-keypair
 
-- name: Install Keys on Openstack
+- name: Install Key on Openstack
   os_keypair:
     cloud: "{{ cloud_name }}"
     state: present

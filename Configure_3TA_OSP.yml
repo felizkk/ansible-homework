@@ -1,0 +1,71 @@
+---
+# Red Hat Delivery Specialist - Ansible Advanced
+# Homework Assignment
+# Provision 3-Tier-App on OSP instances
+
+- name: Deploy 3 Tier App on OpenStack through Jumpbox
+  hosts: workstation-3847.rhpds.opentlc.com
+  vars:
+    - cloud_name: ospcloud
+    - region_name: RegionOne
+  gather_facts: true
+  roles:
+    - osp-facts
+  tags:
+    - deploy-frontend
+    - deploy-app
+
+# Frontends Tier
+- name: Deploy FrontEnd Servers
+  hosts: frontends
+  become: yes
+  gather_facts: false
+  roles:
+    - {name: 3tier-repo, tags: check-repo}
+    - {name: 3tier-frontend, tags: deploy-frontend}
+
+# Apps Tier
+- name: Deploy Application Servers
+  hosts: apps
+  become: yes
+  gather_facts: false
+  roles:
+    - {name: 3tier-repo, tags: check-repo}
+    - {name: 3tier-app, tags: deploy-app}
+
+# Appdbs Tier
+- name: Deploy Database Servers
+  become: yes
+  hosts: appdbs
+  roles:
+    - {name: 3tier-repo, tags: check-repo}
+    - {name: 3tier-appdb, tags: deploy-appdb}
+
+- name: Smoketest 1 on Frontend Servers
+  hosts: frontends
+  become: no
+  tasks:
+  - uri:
+      url: http://localhost
+      return_content: yes
+    register: webpage
+
+- name: Smoketest 2 on Frontend Servers
+  hosts: frontends
+  become: no
+  tasks:
+  - uri:
+      url: http://localhost
+      return_content: yes
+    register: webpage
+
+- name: Smoketest 3 on Frontend Servers
+  hosts: frontends
+  become: no
+  tasks:
+  - uri:
+      url: http://localhost
+      return_content: yes
+    register: webpage
+
+...
