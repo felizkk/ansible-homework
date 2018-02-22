@@ -11,11 +11,11 @@
   gather_facts: true
   roles:
     - osp-facts
-    - 3tier-repo
-    - 3tier-frontend
-    - 3tier-app
-    - 3tier-appdb
-    - 3tier-smoketest
+    # - 3tier-repo
+    # - 3tier-frontend
+    # - 3tier-app
+    # - 3tier-appdb
+    # - 3tier-smoketest
 
 # # Frontends Tier
 # - name: Deploy FrontEnd Servers
