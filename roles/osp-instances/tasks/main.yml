@@ -46,17 +46,17 @@
   tags:
     - osp-instances
 
-- debug: var=instanceserver.ansible_facts.openstack_servers.0.OS-EXT-STS:vm_state
-  tags:
-    - osp-instances
-
-# - name: Start instance {{ target_instance.name }} if server status is SHUTOFF
-#   os_server_action:
-#     server: "{{ target_instance.name }}"
-#     action: start
-#   when: instanceserver.ansible_facts.openstack_servers.[0].OS-EXT-STS:vm_state == "stopped"
+# - debug: var=instanceserver.ansible_facts.openstack_servers.0.OS-EXT-STS:vm_state
 #   tags:
 #     - osp-instances
+
+- name: Start instance {{ target_instance.name }} if server status is SHUTOFF
+  os_server_action:
+    server: "{{ target_instance.name }}"
+    action: start
+  #when: instanceserver.ansible_facts.openstack_servers.[0].OS-EXT-STS:vm_state == "stopped"
+  tags:
+    - osp-instances
 
 - name: Wait for {{ target_instance.name }} SSH to be available
   wait_for:
