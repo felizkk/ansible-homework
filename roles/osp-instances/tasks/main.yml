@@ -39,16 +39,20 @@
   tags:
     - osp-instances
 
-- name: Check Openstack instance status
+- name: Check instance {{ target_instance.name }} server status
   os_server_facts:
     server: "{{ target_instance.name }}"
   register: instanceserver
+  tags:
+    - osp-instances
 
-- name: Start instance {{ target_instance.name }} is SHUTOFF
+- name: Start instance {{ target_instance.name }} if server status is SHUTOFF
   os_server_action:
     server: "{{ target_instance.name }}"
     action: start
   when: instanceserver.status == "SHUTOFF"
+  tags:
+    - osp-instances
 
 - name: Wait for {{ target_instance.name }} SSH to be available
   wait_for:
