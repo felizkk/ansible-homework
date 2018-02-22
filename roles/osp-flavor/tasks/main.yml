@@ -3,12 +3,12 @@
 
 - name: Create Nova {{ nova_flavor_name }} flavor
   os_nova_flavor:
-    cloud: {{ cloud_name }}
+    cloud: "{{ cloud_name }}"
     state: present
-    name: {{ nova_flavor_name }}
-    ram: {{ nova_flavor_ram }}
-    vcpus: {{ nova_flavor_vcpus }}
-    disk: {{ nova_flavor_disk }}
+    name: "{{ nova_flavor_name }}"
+    ram: "{{ nova_flavor_ram }}"
+    vcpus: "{{ nova_flavor_vcpus }}"
+    disk: "{{ nova_flavor_disk }}"
   tags:
     - osp-flavor
 ...
