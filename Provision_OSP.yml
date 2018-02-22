@@ -3,7 +3,7 @@
 # Homework Assignment
 # Provision QA Environment on Openstack
 
-- name: OpenStack Deployment through a Jumpbox
+- name: QA Environment - OpenStack Deployment through a Jumpbox
   # Requirements: Jumpbox is already configured
   # Jumpbox enables ssh forward via ~/.ssh/config of the cloud-user
   hosts: workstation-3847.rhpds.opentlc.com
@@ -24,7 +24,7 @@
     - debug: var=instances
       tags:
         - osp-instances
-    - debug: var=instances['app2']
+    - debug: var=instances[app2]
       tags:
         - osp-instances
   # Create Server Instances
