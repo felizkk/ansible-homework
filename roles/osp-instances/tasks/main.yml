@@ -1,5 +1,5 @@
 ---
-- name: Create Server Instance: {{ instance_name }}
+- name: Create Server Instance for {{ instance_name }}
   os_server:
     cloud: "{{ cloud_name }}"
     name: "{{ item.name }}"
