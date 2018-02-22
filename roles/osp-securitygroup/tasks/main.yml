@@ -20,9 +20,9 @@
     cloud: "{{ cloud_name }}"
     security_group: "{{ item.0.name }}"
     protocol: "{{ item.0.protocol }}"
-    port_range_min: "{{ item.1[port] }}"
-    port_range_max: "{{ item.1[port] }}"
-    remote_ip_prefix: "{{ item.1[ip_prefix] }}"
+    port_range_min: "{{ item.1.port }}"
+    port_range_max: "{{ item.1.port }}"
+    remote_ip_prefix: "{{ item.1.ip_prefix }}"
   with_subelements:
     - "{{ securitygroup }}"
     - rule
