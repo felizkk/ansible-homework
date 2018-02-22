@@ -20,11 +20,13 @@
     - osp-keypair
     - osp-securitygroup
     - osp-flavor
-  tasks:
   # Create Server Instances
-    - name: Create Server Instances
-      include_role:
-        name: osp-instances
-        with_items:
-          - "{{ instances }}"
+    - {name: osp-instances, target_instances: '{{ instances }}'}
+  #tasks:
+  # Create Server Instances
+  #  - name: Create Server Instances
+  #    include_role:
+  #      name: osp-instances
+  #      with_items:
+  #        - "{{ instances }}"
 ...
