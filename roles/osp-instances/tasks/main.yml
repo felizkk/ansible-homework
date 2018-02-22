@@ -46,7 +46,7 @@
   tags:
     - osp-instances
 
-- debug: var=instanceserver.ansible_facts.openstack_servers[0]
+- debug: var=instanceserver.ansible_facts.openstack_servers[0].OS-EXT-STS:vm_state
   tags:
     - osp-instances
 
