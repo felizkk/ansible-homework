@@ -1,0 +1,7 @@
+---
+# Nova Flavor Parameters
+nova_flavor_name: m2.small
+nova_flavor_ram: 2048
+nova_flavor_vcpus: 1
+nova_flavor_disk: 10
+...

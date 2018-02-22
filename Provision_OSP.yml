@@ -7,13 +7,24 @@
   # Requirements: Jumpbox is already configured
   # Jumpbox enables ssh forward via ~/.ssh/config of the cloud-user
   hosts: workstation-3847.rhpds.opentlc.com
+  # Provision Openstack Network/Security/Instances using multiple variables
   vars_files:
     - vars/osp_network.yml
     - vars/osp_securitygroup.yml
+    - vars/osp_flavor.yml
+    - vars/osp_instances.yml
   vars:
     cloud_name: ospcloud
   roles:
     - osp-network
     - osp-keypair
     - osp-securitygroup
+  # Create M2.Small Flavor as defined in varilable file
+    - osp-flavor
+  # Create Server Instances
+    - {name: osp-instances, instance_name: frontend1, tags: osp-instances}
+    - {name: osp-instances, instance_name: app1, tags: osp-instances}
+    - {name: osp-instances, instance_name: app2, tags: osp-instances}
+    - {name: osp-instances, instance_name: db, tags: osp-instances}
+
 ...
