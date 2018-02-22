@@ -2,11 +2,11 @@
 - name: Create Server Instance for {{ instance_name }}
   os_server:
     cloud: "{{ cloud_name }}"
-    name: "{{ item.name }}"
+    name: "{{ instances.name }}"
     image: rhel-guest
-    meta: "group={{ item.group }},deployment_name={{ item.deployment }}"
+    meta: "group={{ instances.group }},deployment_name={{ instances.deployment }}"
     flavor: m2.small
-    security_groups: "{{ item.security_group_name }}"
+    security_groups: "{{ instances.security_group_name }}"
     key_name: ansible_ssh
     wait: yes
     nics:
@@ -17,9 +17,7 @@
       cat /tmp/openstack.pub >> /home/cloud-user/.ssh/authorized_keys
       curl -o /tmp/internal.repo http://www.opentlc.com/download/ansible_bootcamp/repo/internal.repo
       cp /tmp/internal.repo /etc/yum.repos.d/internal.repo
-  with_items:
-    - "{{ instances }}"
-  when: item.name == "{{ instance_name }}"
+  when: instances.name == "{{ instance_name }}"
   register: instanceip
   tags:
     - osp-instances
