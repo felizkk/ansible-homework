@@ -22,9 +22,9 @@
   # Create M2.Small Flavor as defined in varilable file
     - osp-flavor
   # Create Server Instances
-    - {name: osp-instances, instance_name: frontend1, tags: osp-instances}
-    - {name: osp-instances, instance_name: app1, tags: osp-instances}
-    - {name: osp-instances, instance_name: app2, tags: osp-instances}
-    - {name: osp-instances, instance_name: db, tags: osp-instances}
+    - {name: osp-instances, instance_name: 'frontend1', tags: 'osp-instances'}
+    - {name: osp-instances, instance_name: 'app1', tags: 'osp-instances'}
+    - {name: osp-instances, instance_name: 'app2', tags: 'osp-instances'}
+    - {name: osp-instances, instance_name: 'db', tags: 'osp-instances'}
 
 ...

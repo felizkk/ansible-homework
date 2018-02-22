@@ -9,5 +9,6 @@
     ram: {{ nova_flavor_ram }}
     vcpus: {{ nova_flavor_vcpus }}
     disk: {{ nova_flavor_disk }}
-
+  tags:
+    - osp-flavor
 ...
