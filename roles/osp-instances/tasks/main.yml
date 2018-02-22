@@ -54,7 +54,7 @@
   os_server_action:
     server: "{{ target_instance.name }}"
     action: start
-  when: instanceserver.0.status == "SHUTOFF"
+  when: instanceserver.ansible_facts.openstack_servers[vm_state] == "stopped"
   tags:
     - osp-instances
 
