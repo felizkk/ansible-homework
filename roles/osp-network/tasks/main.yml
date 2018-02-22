@@ -1,4 +1,6 @@
 ---
+# Create Internal and External Networks on OpenStack
+
 # Internal Private Network
 - name: Creating Internal Network
   os_network:
@@ -8,6 +10,8 @@
     external: false
   tags:
    - internal-network
+   - osp-network
+
 - name: Creating Internal Subnet
   os_subnet:
     cloud: "{{ cloud_name }}"
@@ -19,6 +23,7 @@
     host_routes: "{{ int_static_route }}"
   tags:
    - internal-network
+   - osp-network
 
 # External Public Network
 - name: Creating External Network
@@ -29,6 +34,8 @@
     external: true
   tags:
    - external-network
+   - osp-network
+
 - name: Creating External Subnet
   os_subnet:
     cloud: "{{ cloud_name }}"
@@ -40,6 +47,7 @@
     host_routes: "{{ ext_static_route }}"
   tags:
    - external-network
+   - osp-network
 
 # Router to connect external to internal
 - name: Creating Router
@@ -54,4 +62,6 @@
       - "{{ int_subnet_name }}"
   tags:
     - router-network
+    - osp-network
+
 ...

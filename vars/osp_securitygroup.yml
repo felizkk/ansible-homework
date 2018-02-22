@@ -11,7 +11,7 @@ securitygroup:
   - name: frontend_servers
     protocol: tcp
     rule:
-      - port: '8080'
+      - port: '80'
         ip_prefix: '0.0.0.0/0'
       - port: '443'
         ip_prefix: '0.0.0.0/0'
