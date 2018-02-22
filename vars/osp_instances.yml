@@ -9,23 +9,23 @@
 #deployment: qa
 
 instances:
-  frontend1:
-    - name: frontend1
+  - frontend1:
+      name: frontend1
       group: frontends
       deployment: qa
       security_group_name: frontend_servers
-  app1:
-    - name: app1
+  - app1:
+      name: app1
       group: apps
       deployment: qa
       security_group_name: app_servers
-  app2:
-    - name: app2
+  - app2:
+      name: app2
       group: apps
       deployment: qa
       security_group_name: app_servers
-  db:
-    - name: db
+  - db:
+      name: db
       group: appdbs
       deployment: qa
       security_group_name: db_servers
