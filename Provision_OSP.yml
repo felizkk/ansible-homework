@@ -9,6 +9,7 @@
   hosts: workstation-3847.rhpds.opentlc.com
   vars_files:
     - vars/osp_network.yml
+    - vars/osp_securitygroup.yml
   vars:
     cloud_name: ospcloud
   roles:
