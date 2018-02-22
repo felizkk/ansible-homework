@@ -1,10 +1,10 @@
 ---
-- name: Create server instance for {{ target_instance.name }}
+- name: Create server instance for {{ item.name }}
   os_server:
     cloud: "{{ cloud_name }}"
-    name: "{{ target_instance.name }}"
+    name: "{{ item.name }}"
     image: rhel-guest
-    meta: "group={{ target_instance.group }},deployment_name={{ target_instance.deployment }}"
+    meta: "group={{ item.group }},deployment_name={{ item.deployment }}"
     flavor: "{{ nova_flavor_name }}"
     security_groups: "{{ target_instance.security_group_name }}"
     key_name: ansible_ssh
@@ -21,12 +21,12 @@
   tags:
     - osp-instances
 
-- name: Add floating IP to {{ target_instance.name }} instance
+- name: Add floating IP to {{ item.name }} instance
   os_floating_ip:
     cloud: "{{ cloud_name }}"
     state: present
     reuse: yes
-    server: "{{ target_instance.name }}"
+    server: "{{ item.name }}"
     network: "{{ ext_network_name }}"
     wait: true
     timeout: 180
