@@ -17,7 +17,7 @@
       cat /tmp/openstack.pub >> /home/cloud-user/.ssh/authorized_keys
       curl -o /tmp/internal.repo http://www.opentlc.com/download/ansible_bootcamp/repo/internal.repo
       cp /tmp/internal.repo /etc/yum.repos.d/internal.repo
-  when: instances.name == "{{ instance_name }}"
+  when: instances.name == instance_name
   register: instanceip
   tags:
     - osp-instances
@@ -27,13 +27,11 @@
     cloud: "{{ cloud_name }}"
     state: present
     reuse: yes
-    server: "{{ item.name }}"
+    server: "{{ instances.name }}"
     network: "{{ ext_network_name }}"
     wait: true
     timeout: 180
-  with_items:
-    - "{{ instances }}"
-  when: item.name == "{{ instance_name }}"
+  when: instances.name == instance_name
   register: instancefloatingip
   tags:
     - osp-instances
