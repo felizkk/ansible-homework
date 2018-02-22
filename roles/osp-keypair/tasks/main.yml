@@ -9,6 +9,14 @@
   tags:
     - osp-keypair
 
+- name: Delete Keys on Openstack
+  os_keypair:
+    cloud: "{{ cloud_name }}"
+    state: absent
+    name: ansible_ssh
+  tags:
+    - osp-keypair
+
 - name: Install Keys on Openstack
   os_keypair:
     cloud: "{{ cloud_name }}"
@@ -16,5 +24,5 @@
     name: ansible_ssh
     public_key_file: "{{ ansible_env.HOME }}/.ssh/test_id_rsa.pub"
   tags:
-    - osp-keypair    
+    - osp-keypair
 ...
