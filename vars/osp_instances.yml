@@ -1,13 +1,6 @@
 ---
 # Variables for Openstack Instances Creation
 
-#webserver_name: web1
-#databaseserver_name: db1
-#flavor_name: m1.small
-#webserver_group: webservers
-#database_group: databaseservers
-#deployment: qa
-
 instance_frontend1:
   name: frontend1
   group: frontends
