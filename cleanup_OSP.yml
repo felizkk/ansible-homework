@@ -1,4 +1,8 @@
 ---
+# Red Hat Delivery Specialist - Ansible Advanced
+# Homework Assignment
+# QA Environment - Destroy all Openstack server instances
+
 - name: QA Environment - Destroy all Openstack server instances
   hosts: workstation-3847.rhpds.opentlc.com
   vars:

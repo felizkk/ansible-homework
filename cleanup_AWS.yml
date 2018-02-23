@@ -1,11 +1,14 @@
 ---
+# Red Hat Delivery Specialist - Ansible Advanced
+# Homework Assignment
+# Production Environment - Cleanup all AWS server packages
+
 # Due to unfamiliarity with Amazon Tower API, and due to the fact if The
 # OpenTLC CloudForms service is destroyed I have to wait for another 20 minutes
-# Plus finding new GUID and writing new private key (GUIDkey .pem) on Tower,
-# For this homework destroying AWS instance is limited to resetting the
-# RHEL packages
-# So it is different with the QA Openstack where the whole server instances
-# is deleted and rebuilt later on
+# plus finding new GUID and writing new private key (GUIDkey.pem) on Tower, for
+# this homework destroying AWS instance will be limited to resetting/removing the
+# RHEL packages + configs. So it is different with the QA Openstack where the
+# whole server instances are deleted and rebuilt later on.
 # Besides, this is Production! Nobody is supposed to delete production Servers
 
 - name: Production Environment - Cleanup all AWS server packages
