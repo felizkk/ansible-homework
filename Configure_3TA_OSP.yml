@@ -35,35 +35,28 @@
 - name: Deploy Database Servers
   become: yes
   hosts: appdbs
+  gather_facts: false
   roles:
     - 3tier-repo
     - 3tier-appdb
 
-- name: Smoketest 1 on Frontend Servers
+# Smoketest 3 times
+- name: Smoketest Frontend Servers
   hosts: frontends
   become: no
+  gather_facts: false
   tasks:
-  - uri:
+  - name: Smoketest 1 - Frontend URL
+    uri:
       url: http://localhost
       return_content: yes
-    register: webpage
-
-- name: Smoketest 2 on Frontend Servers
-  hosts: frontends
-  become: no
-  tasks:
-  - uri:
+  - name: Smoketest 2 - Frontend URL
+    uri:
       url: http://localhost
       return_content: yes
-    register: webpage
-
-- name: Smoketest 3 on Frontend Servers
-  hosts: frontends
-  become: no
-  tasks:
-  - uri:
+  - name: Smoketest 3 - Frontend URL
+    uri:
       url: http://localhost
       return_content: yes
-    register: webpage
 
 ...
