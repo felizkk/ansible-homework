@@ -11,12 +11,14 @@
   become: yes
   become_method: sudo
   tasks:
+  - name: Extend PATH to include /home/cloud-user/bin
+    shell: PATH=$PATH:/home/cloud-user/bin
   - name: Provision AWS via script
     shell: source ./credential.rc ; ./order_svc.sh -c 'OPENTLC Automation' -i 'Three Tier Application' -t 1 -y
     args:
       chdir: /home/cloud-user
-    environment:
-      PATH:$PATH:/home/cloud-user/bin
+    #environment:
+    #  PATH:$PATH:/home/cloud-user/bin
     register: aws_result
 
   - debug: var=aws_result
