@@ -1,0 +1,20 @@
+---
+# Red Hat Delivery Specialist - Ansible Advanced
+# Homework Assignment
+# Provision Production Environment on AWS
+
+- name: Production Environment - AWS Infrastructure Deployment through a Jumpbox
+  # Requirements: Jumpbox is already configured
+  hosts: workstation-3847.rhpds.opentlc.com
+  # Provision Openstack Network/Security/Instances using multiple variables
+  tasks:
+  - name: Provision AWS via script
+    # No need to be root for AWS remote provisioning
+    shell: source credential.rc ; ./order_svc.sh -c 'OPENTLC Automation' -i 'Three Tier Application' -t 1 -y
+    args:
+      chdir: /home/cloud-user/
+    register: aws_result
+
+  - debug: var=aws_result
+
+...

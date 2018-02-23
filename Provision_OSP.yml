@@ -3,9 +3,8 @@
 # Homework Assignment
 # Provision QA Environment on Openstack
 
-- name: QA Environment - OpenStack Deployment through a Jumpbox
+- name: QA Environment - OpenStack Infrastructure Deployment through a Jumpbox
   # Requirements: Jumpbox is already configured
-  # Jumpbox enables ssh forward via ~/.ssh/config of the cloud-user
   hosts: workstation-3847.rhpds.opentlc.com
   # Provision Openstack Network/Security/Instances using multiple variables
   vars_files:
