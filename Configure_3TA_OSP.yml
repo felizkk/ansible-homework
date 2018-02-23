@@ -36,8 +36,8 @@
   become: yes
   hosts: appdbs
   roles:
-    - {name: 3tier-repo, tags: check-repo}
-    - {name: 3tier-appdb, tags: deploy-appdb}
+    - 3tier-repo
+    - 3tier-appdb
 
 - name: Smoketest 1 on Frontend Servers
   hosts: frontends
