@@ -1,0 +1,22 @@
+---
+# Due to unfamiliarity with Amazon Tower API, and due to the fact if The
+# OpenTLC CloudForms service is destroyed I have to wait for another 20 minutes
+# Plus finding new GUID and writing new private key (GUIDkey .pem) on Tower,
+# For this homework destroying AWS instance is limited to resetting the
+# RHEL packages
+# So it is different with the QA Openstack where the whole server instances
+# is deleted and rebuilt later on
+# Besides, this is Production! Nobody is supposed to delete production Servers
+
+- name: Production Environment - Cleanup all AWS server packages
+  hosts:
+    - frontends
+    - apps
+    - appdbs
+  gather_facts: false
+  become: true
+  roles:
+  # Remove All 3Tier Servers Packages
+    - 3tier-cleaner
+
+...
