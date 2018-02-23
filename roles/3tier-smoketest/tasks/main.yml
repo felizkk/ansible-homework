@@ -1,6 +1,6 @@
 ---
 # Smoke Test for the Fronetend Servers
-# We do it 3 times to observe load-balancing HAProxh in os_server_action
+# We do it 3 times to observe load-balancing HAProxy in os_server_action
 
 - name: Smoketest 1 on Frontend Servers
   hosts: frontends
