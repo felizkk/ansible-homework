@@ -8,7 +8,7 @@
   vars:
     - cloud_name: ospcloud
     - region_name: RegionOne
-  gather_facts: true
+  gather_facts: false
   roles:
   # Create Dynamic Inventory by Gathering Facts on OSP instances
     - osp-facts
