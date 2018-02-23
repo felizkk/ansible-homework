@@ -81,3 +81,5 @@ Besides, this is Production! Nobody is supposed to delete production Servers
 
 8. The HAProxy template file has been edited to support dynamic inventories of
 both OSP and AWS
+
+
