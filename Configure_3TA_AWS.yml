@@ -13,13 +13,19 @@
 # tag_AnsibleGroup_support
 # tag_AnsibleGroup_towers
 
+# I am adding some static groups on the Inventory from Tower GUI:
+# frontends -> children ->  tag_AnsibleGroup_frontends
+# apps -> children ->  tag_AnsibleGroup_apps
+# appdbs -> children ->  tag_AnsibleGroup_appdbs
+# So I am NOT using a custom inventory file defined by ansible.cfg
+
 # ec2-user is used for login to AWS instances
 # GUIDkey.pem taken from the AWS Bastion Host is used for the SSH Private Key
 # Configured via Tower's WebGUI - Credentials
 
 # Frontends Tier
 - name: Production Environment - Deploy FrontEnd Servers
-  hosts: tag_AnsibleGroup_frontends
+  hosts: frontends
   become: yes
   gather_facts: false
   roles:
@@ -28,7 +34,7 @@
 
 # Apps Tier
 - name: Production Environment - Deploy Application Servers
-  hosts: tag_AnsibleGroup_apps
+  hosts: apps
   become: yes
   gather_facts: false
   roles:
@@ -38,7 +44,7 @@
 # Appdbs Tier
 - name: Production Environment - Deploy Database Servers
   become: yes
-  hosts: tag_AnsibleGroup_appdbs
+  hosts: appdbs
   gather_facts: false
   roles:
     - 3tier-repo
@@ -46,7 +52,7 @@
 
 # Smoketest 3 times
 - name: Production Environment - Smoketest Frontend Servers
-  hosts: tag_AnsibleGroup_frontends
+  hosts: frontends
   become: no
   gather_facts: false
   tasks:
