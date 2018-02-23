@@ -31,39 +31,39 @@
     - 3tier-repo
     - 3tier-app
 
-# # Appdbs Tier
-# - name: Deploy Database Servers
-#   become: yes
-#   hosts: appdbs
-#   roles:
-#     - {name: 3tier-repo, tags: check-repo}
-#     - {name: 3tier-appdb, tags: deploy-appdb}
-#
-# - name: Smoketest 1 on Frontend Servers
-#   hosts: frontends
-#   become: no
-#   tasks:
-#   - uri:
-#       url: http://localhost
-#       return_content: yes
-#     register: webpage
-#
-# - name: Smoketest 2 on Frontend Servers
-#   hosts: frontends
-#   become: no
-#   tasks:
-#   - uri:
-#       url: http://localhost
-#       return_content: yes
-#     register: webpage
-#
-# - name: Smoketest 3 on Frontend Servers
-#   hosts: frontends
-#   become: no
-#   tasks:
-#   - uri:
-#       url: http://localhost
-#       return_content: yes
-#     register: webpage
+# Appdbs Tier
+- name: Deploy Database Servers
+  become: yes
+  hosts: appdbs
+  roles:
+    - {name: 3tier-repo, tags: check-repo}
+    - {name: 3tier-appdb, tags: deploy-appdb}
+
+- name: Smoketest 1 on Frontend Servers
+  hosts: frontends
+  become: no
+  tasks:
+  - uri:
+      url: http://localhost
+      return_content: yes
+    register: webpage
+
+- name: Smoketest 2 on Frontend Servers
+  hosts: frontends
+  become: no
+  tasks:
+  - uri:
+      url: http://localhost
+      return_content: yes
+    register: webpage
+
+- name: Smoketest 3 on Frontend Servers
+  hosts: frontends
+  become: no
+  tasks:
+  - uri:
+      url: http://localhost
+      return_content: yes
+    register: webpage
 
 ...
