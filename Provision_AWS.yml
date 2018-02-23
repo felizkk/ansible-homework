@@ -7,7 +7,8 @@
   # Requirements: Jumpbox is already configured
   hosts: workstation-3847.rhpds.opentlc.com
   # Provision Openstack Network/Security/Instances using multiple variables
-  gather_facts: false
+  # ansible_env must be gathered from facts, thus gathering facts can't be disabled
+  gather_facts: true
   become: yes
   become_method: sudo
   tasks:
