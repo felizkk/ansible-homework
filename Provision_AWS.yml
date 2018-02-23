@@ -12,7 +12,7 @@
   become_method: sudo
   tasks:
   - name: Provision AWS via script
-    shell: source credential.rc ; ./order_svc.sh -c 'OPENTLC Automation' -i 'Three Tier Application' -t 1 -y
+    shell: source ./credential.rc ; ./order_svc.sh -c 'OPENTLC Automation' -i 'Three Tier Application' -t 1 -y
     args:
       chdir: /home/cloud-user
     environment:
