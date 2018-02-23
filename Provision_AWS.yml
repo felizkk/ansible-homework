@@ -11,14 +11,13 @@
   become: yes
   become_method: sudo
   tasks:
-  - name: Extend PATH to include /home/cloud-user/bin
-    shell: PATH=$PATH:/home/cloud-user/bin
-  - name: Provision AWS via script
+  - name: Provision AWS via script order_svc
     shell: source ./credential.rc ; ./order_svc.sh -c 'OPENTLC Automation' -i 'Three Tier Application' -t 1 -y
     args:
       chdir: /home/cloud-user
-    #environment:
-    #  PATH:$PATH:/home/cloud-user/bin
+    # Since jq command will be called from /home/cloud-user/bin, we need to expand the PATH
+    environment:
+      PATH: "{{ ansible_env.PATH }}:/home/cloud-user/bin"
     register: aws_result
 
   - debug: var=aws_result
