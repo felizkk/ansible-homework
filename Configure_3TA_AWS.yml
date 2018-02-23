@@ -1,0 +1,67 @@
+---
+# Red Hat Delivery Specialist - Ansible Advanced
+# Homework Assignment
+# Provision 3-Tier-App on AWS instances
+# Production environment
+
+# List of Discovered EC2 Tags (Groups)
+# tag_AnsibleGroup_activedirectories_windows
+# tag_AnsibleGroup_appdbs
+# tag_AnsibleGroup_apps
+# tag_AnsibleGroup_bastions
+# tag_AnsibleGroup_frontends
+# tag_AnsibleGroup_support
+# tag_AnsibleGroup_towers
+
+# ec2-user is used for login to AWS instances
+# GUIDkey.pem taken from the AWS Bastion Host is used for the SSH Private Key
+# Configured via Tower's WebGUI - Credentials
+
+# Frontends Tier
+- name: Production Environment - Deploy FrontEnd Servers
+  hosts: tag_AnsibleGroup_frontends
+  become: yes
+  gather_facts: false
+  roles:
+    - 3tier-repo
+    - 3tier-frontend
+
+# Apps Tier
+- name: Production Environment - Deploy Application Servers
+  hosts: tag_AnsibleGroup_apps
+  become: yes
+  gather_facts: false
+  roles:
+    - 3tier-repo
+    - 3tier-app
+
+# Appdbs Tier
+- name: Production Environment - Deploy Database Servers
+  become: yes
+  hosts: tag_AnsibleGroup_appdbs
+  gather_facts: false
+  roles:
+    - 3tier-repo
+    - 3tier-appdb
+
+# Smoketest 3 times
+- name: Production Environment - Smoketest Frontend Servers
+  hosts: tag_AnsibleGroup_frontends
+  become: no
+  gather_facts: false
+  tasks:
+  - name: Smoketest 1 - Frontend URL
+    uri:
+      url: http://localhost
+      return_content: yes
+  - name: Smoketest 2 - Frontend URL
+    uri:
+      url: http://localhost
+      return_content: yes
+  - name: Smoketest 3 - Frontend URL
+    uri:
+      url: http://localhost
+      return_content: yes
+
+...
+s

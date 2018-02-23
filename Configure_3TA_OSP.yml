@@ -2,6 +2,7 @@
 # Red Hat Delivery Specialist - Ansible Advanced
 # Homework Assignment
 # Provision 3-Tier-App on OSP instances
+# QA Environment
 
 - name: QA Environment - 3-Tier Apps Deployments through Openstack instances
   hosts: workstation-3847.rhpds.opentlc.com
