@@ -1,0 +1,12 @@
+---
+- name: QA Environment - Destroy all Openstack server instances
+  hosts: workstation-3847.rhpds.opentlc.com
+  vars:
+    cloud_name: ospcloud
+  roles:
+  # Destroy All Server Instancess
+    - {name: osp-destroy, instance_name: 'frontend1'}
+    - {name: osp-destroy, instance_name: 'app1'}
+    - {name: osp-destroy, instance_name: 'app2'}
+    - {name: osp-destroy, instance_name: 'db'}
+...

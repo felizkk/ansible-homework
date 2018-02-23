@@ -1,0 +1,13 @@
+---
+# Destroy all Openstack Instances
+- name: Destroy all Openstack server instances
+  os_server:
+    cloud: "{{ cloud_name }}"
+    name: "{{ instance_name }}"
+    state: absent
+  register: destory_result
+  tags:
+    - osp-destroy
+
+- debug: var=destory_result
+...
