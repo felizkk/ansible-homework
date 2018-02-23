@@ -19,9 +19,6 @@
   hosts: frontends
   become: yes
   gather_facts: false
-  vars:
-    # To be passed to the jinja template
-    - group_name: tag_AnsibleGroup_frontends  
   roles:
     - 3tier-repo
     - 3tier-frontend
