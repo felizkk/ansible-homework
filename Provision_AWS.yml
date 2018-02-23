@@ -15,7 +15,8 @@
     # No need to be root for AWS remote provisioning
     shell: source credential.rc ; ./order_svc.sh -c 'OPENTLC Automation' -i 'Three Tier Application' -t 1 -y
     args:
-      chdir: /home/cloud-user/
+      chdir: /home/cloud-user
+      executable: /home/cloud-user/bin
   #  register: aws_result
 
   #- debug: var=aws_result
